@@ -1,0 +1,9 @@
+{
+    "llm_conf":{
+        "llm_path":"llm_model",
+        "prefix":"lora",
+        "bits":"fp16"
+    },
+    "embedding_path": "embedding_model"
+
+}
