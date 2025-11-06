@@ -9,7 +9,7 @@ from benchmark.stardojo_main.env.stardew_env import *
 from benchmark.stardojo_main.agent.stardojo.stardojo_react_agent import *
 from benchmark.stardojo_main.env.tasks.base import *
 
-def run_sampling(
+def run_critic(
     port: int,
     save_index: int,
     new_game: bool,
@@ -96,3 +96,6 @@ def run_sampling(
 
     react_agent.pipeline_shutdown()
     stardojo_env.exit()
+
+def run_actor():
+    pass

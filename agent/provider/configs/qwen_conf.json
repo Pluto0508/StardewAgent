@@ -1,9 +1,14 @@
 {
-    "llm_conf":{
+    "actor_conf":{
         "llm_path":"llm_model",
         "prefix":"lora",
         "bits":"fp16"
     },
-    "embedding_path": "embedding_model"
+    "critic":{
+        "model_name":"qwen2.5-vl-7b-instruct",
+        "api_url":"123",
+        "api_key":"123"
+    },
+    "embedding_name": "embedding_model"
 
 }

@@ -16,7 +16,12 @@ def set_path():
         'trainer':os.path.join(project_root,'trainer'),
         'test':os.path.join(project_root,'test'),
         'configs':os.path.join(project_root,'configs'),
+
         'benchmark':os.path.join(project_root,'benchmark'),
+        'stardojo_main':os.path.join(project_root,'benchmark\\stardojo_main'),
+        'stardojo_agent':os.path.join(project_root,'benchmark\\stardojo_main\\agent'),
+        'stardojo_env':os.path.join(project_root,'benchmark\\stardojo_main\\env'),
+        'stardojo_':os.path.join(project_root,'benchmark\\stardojo_main\\agent\\stardojo'),
 
         'agent':agent_path,
         'memory':os.path.join(agent_path,'memory'),

@@ -45,7 +45,8 @@ PROVIDER_SETTING_API_VERSION = "api_version" # Azure-speficic setting
 PROVIDER_SETTING_DEPLOYMENT_MAP = "models"   # Azure-speficic setting
 
 
-class OpenAIProvider(LLMProvider, EmbeddingProvider):
+
+class OpenAIProvider_(LLMProvider, EmbeddingProvider):
     """A class that wraps a given model"""
 
     client: Any = None
@@ -691,3 +692,226 @@ class OpenAIProvider(LLMProvider, EmbeddingProvider):
             return self.assemble_prompt_tripartite(template_str=template_str, params=params)
         elif config.DEFAULT_MESSAGE_CONSTRUCTION_MODE == constants.MESSAGE_CONSTRUCTION_MODE_PARAGRAPH:
             return self.assemble_prompt_paragraph(template_str=template_str, params=params)
+
+
+class OpenAIProvider(OpenAIProvider_):
+    def __init__(self, is_opensource=True):
+        super().__init__(is_opensource)
+    
+    def _parse_config(self, provider_cfg) -> dict:
+        """Parse the config object"""
+
+        conf_dict = dict()
+
+        if isinstance(provider_cfg, dict):
+            conf_dict = provider_cfg
+        else:
+            path = assemble_project_path(provider_cfg)
+            conf_dict = load_json(path)
+
+        key_var_name = conf_dict[PROVIDER_SETTING_KEY_VAR]
+
+        if conf_dict[PROVIDER_SETTING_IS_AZURE]:
+
+            key = os.getenv(key_var_name)
+            endpoint_var_name = conf_dict[PROVIDER_SETTING_BASE_VAR]
+            endpoint = os.getenv(endpoint_var_name)
+
+            self.client = AzureOpenAI(
+                api_key = key,
+                api_version = conf_dict[PROVIDER_SETTING_API_VERSION],
+                azure_endpoint = endpoint
+            )
+        else:
+            if self.is_opensource:
+                base_url = conf_dict["base_url"]
+                key = os.getenv("OPEN_SRC_KEY")
+                self.client = OpenAI(
+                    api_key = key,
+                    base_url = base_url
+                )
+
+            else:
+                key = os.getenv(key_var_name)
+                self.client = OpenAI(
+                    api_key=key
+                )
+
+        self.embedding_model = conf_dict[PROVIDER_SETTING_EMB_MODEL]
+        self.llm_model = conf_dict[PROVIDER_SETTING_COMP_MODEL]
+
+        return conf_dict
+    
+    def _get_len_safe_embeddings(
+        self,
+        texts: List[str],
+    ) -> List[List[float]]:
+        embeddings: List[List[float]] = [[] for _ in range(len(texts))]
+        try:
+            import tiktoken
+        except ImportError:
+            raise ImportError(
+                "Could not import tiktoken python package. "
+                "This is needed in order to for OpenAIEmbeddings. "
+                "Please install it with `pip install tiktoken`."
+            )
+
+        tokens = []
+        indices = []
+        model_name = self.tiktoken_model_name or self.embedding_model
+        try:
+            encoding = tiktoken.encoding_for_model(model_name)
+        except KeyError:
+            logger.warn("Warning: model not found. Using cl100k_base encoding.")
+            model = "cl100k_base"
+            encoding = tiktoken.get_encoding(model)
+        for i, text in enumerate(texts):
+            token = encoding.encode(
+                text,
+                allowed_special=self.allowed_special,
+                disallowed_special=self.disallowed_special,
+            )
+            for j in range(0, len(token), self.embedding_ctx_length):
+                tokens.append(token[j : j + self.embedding_ctx_length])
+                indices.append(i)
+
+        batched_embeddings: List[List[float]] = []
+        _chunk_size = self.chunk_size
+        _iter = range(0, len(tokens), _chunk_size)
+
+        for i in _iter:
+            response = self.embed_with_retry(
+                input=tokens[i : i + self.chunk_size],
+                **self._emb_invocation_params,
+            )
+            batched_embeddings.extend(r.embedding for r in response.data)
+
+        results: List[List[List[float]]] = [[] for _ in range(len(texts))]
+        num_tokens_in_batch: List[List[int]] = [[] for _ in range(len(texts))]
+        for i in range(len(indices)):
+            if self.skip_empty and len(batched_embeddings[i]) == 1:
+                continue
+            results[indices[i]].append(batched_embeddings[i])
+            num_tokens_in_batch[indices[i]].append(len(tokens[i]))
+
+        for i in range(len(texts)):
+            _result = results[i]
+            if len(_result) == 0:
+                average = self.embed_with_retry(
+                    input="",
+                    **self._emb_invocation_params,
+                ).data[0].embedding
+            else:
+                average = np.average(_result, axis=0, weights=num_tokens_in_batch[i])
+            embeddings[i] = (average / np.linalg.norm(average)).tolist()
+
+        return embeddings
+    
+    def create_completion(
+        self,
+        messages: List[Dict[str, str]],
+        model: str | None = None,
+        temperature: float = config.temperature,
+        seed: int = config.seed,
+        max_tokens: int = config.max_tokens,
+    ) -> Tuple[str, Dict[str, int]]:
+        """Create a chat completion using the OpenAI API
+
+        Supports both GPT-4 and GPT-4V).
+
+        Example Usage:
+        image_path = "path_to_your_image.jpg"
+        base64_image = encode_image(image_path)
+        response, info = self.create_completion(
+            model="gpt-4-vision-preview",
+            messages=[
+              {
+                "role": "user",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "What’s in this image?"
+                  },
+                  {
+                    "type": "image_url",
+                    "image_url": {
+                      "url": f"data:image/jpeg;base64,{base64_image}"
+                    }
+                  }
+                ]
+              }
+            ],
+        )
+        """
+
+        if model is None:
+            model = self.llm_model
+
+        if config.debug_mode:
+            logger.debug(f"Creating chat completion with model {model}, temperature {temperature}, max_tokens {max_tokens}")
+        else:
+            logger.write(f"Requesting {model} completion...")
+
+        @backoff.on_exception(
+            backoff.constant,
+            (
+                APIError,
+                RateLimitError,
+                APITimeoutError),
+            max_tries=self.retries,
+            interval=10,
+        )
+        def _generate_response_with_retry(
+            messages: List[Dict[str, str]],
+            model: str,
+            temperature: float,
+            seed: int = None,
+            max_tokens: int = 512,
+        ) -> Tuple[str, Dict[str, int]]:
+
+            """Send a request to the OpenAI API."""
+            if self.provider_cfg[PROVIDER_SETTING_IS_AZURE]:
+                response = self.client.chat.completions.create(model=model,
+                messages=messages,
+                temperature=temperature,
+                seed=seed,
+                max_tokens=max_tokens,)
+            elif model.startswith("o3"):
+                response = self.client.chat.completions.create(model=model,
+                messages=messages,
+                temperature=temperature,
+                seed=seed,
+                max_completion_tokens=max_tokens,)
+            #此处添加一个elif，对于本地部署的模型读取方式有些不同
+            else:
+                response = self.client.chat.completions.create(model=model,
+                messages=messages,
+                temperature=temperature,
+                seed=seed,
+                max_tokens=max_tokens,)
+
+            if response is None:
+                logger.error("Failed to get a response from OpenAI. Try again.")
+                logger.double_check()
+
+            message = response.choices[0].message.content
+
+            info = {
+                "prompt_tokens" : response.usage.prompt_tokens,
+                "completion_tokens" : response.usage.completion_tokens,
+                "total_tokens" : response.usage.total_tokens,
+                "system_fingerprint" : response.system_fingerprint,
+            }
+
+            logger.write(f'Response received from {model}.')
+
+            return message, info
+
+        return _generate_response_with_retry(
+            messages,
+            model,
+            temperature,
+            seed,
+            max_tokens,
+        )
+    

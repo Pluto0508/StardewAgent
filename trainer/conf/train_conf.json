@@ -1,0 +1,17 @@
+{
+    "critic":{
+        "max_episodes":1000,
+        "shift_episodes":100,
+        "is_memory": false,
+        "is_plan":false,
+        "is_rag":false
+
+    },
+    "actor":{
+        "train_method":"PPO",
+        "is_memory":false,
+        "is_plan":false,
+        "max_steps":1000,
+        "save_steps":100
+    }
+}
