@@ -36,9 +36,9 @@ MAX_TOKENS = {
     "gpt-3.5-turbo-16k-0613": 16385,
 }
 
-PROVIDER_SETTING_KEY_VAR = "key_var"
+PROVIDER_SETTING_KEY_VAR = "api_key"
 PROVIDER_SETTING_EMB_MODEL = "emb_model"
-PROVIDER_SETTING_COMP_MODEL = "comp_model"
+PROVIDER_SETTING_COMP_MODEL = "critic_name"
 PROVIDER_SETTING_IS_AZURE = "is_azure"
 PROVIDER_SETTING_BASE_VAR = "base_var"       # Azure-speficic setting
 PROVIDER_SETTING_API_VERSION = "api_version" # Azure-speficic setting
@@ -698,112 +698,79 @@ class OpenAIProvider(OpenAIProvider_):
     def __init__(self, is_opensource=True):
         super().__init__(is_opensource)
     
-    def _parse_config(self, provider_cfg) -> dict:
+    def init_provider(self, provider_cfg,model_type):
+        self.provider_cfg=self._parse_config(provider_cfg,model_type)
+    
+    def _parse_config(self, provider_cfg, model_type) -> dict:
         """Parse the config object"""
 
         conf_dict = dict()
-
         if isinstance(provider_cfg, dict):
             conf_dict = provider_cfg
         else:
-            path = assemble_project_path(provider_cfg)
-            conf_dict = load_json(path)
+            conf_dict = load_json(provider_cfg)
+        
 
-        key_var_name = conf_dict[PROVIDER_SETTING_KEY_VAR]
+        if self.is_opensource:
+            if model_type=='critic':
+                conf_dict_=conf_dict['critic_conf']
+            elif model_type=='embedding':
+                conf_dict_=conf_dict['embedding_conf']
 
-        if conf_dict[PROVIDER_SETTING_IS_AZURE]:
-
-            key = os.getenv(key_var_name)
-            endpoint_var_name = conf_dict[PROVIDER_SETTING_BASE_VAR]
-            endpoint = os.getenv(endpoint_var_name)
-
-            self.client = AzureOpenAI(
+            base_url = conf_dict_["api_url"]
+            key = os.getenv("OPEN_SRC_KEY")
+            self.client = OpenAI(
                 api_key = key,
-                api_version = conf_dict[PROVIDER_SETTING_API_VERSION],
-                azure_endpoint = endpoint
+                base_url = base_url
             )
-        else:
-            if self.is_opensource:
-                base_url = conf_dict["base_url"]
-                key = os.getenv("OPEN_SRC_KEY")
-                self.client = OpenAI(
-                    api_key = key,
-                    base_url = base_url
-                )
+        
+        self.llm_model = conf_dict['critic_conf']["critic_name"]
+        self.embedding_model = conf_dict['embedding_conf']["embedding_name"]
 
-            else:
-                key = os.getenv(key_var_name)
-                self.client = OpenAI(
-                    api_key=key
-                )
-
-        self.embedding_model = conf_dict[PROVIDER_SETTING_EMB_MODEL]
-        self.llm_model = conf_dict[PROVIDER_SETTING_COMP_MODEL]
-
-        return conf_dict
+        return conf_dict_
     
     def _get_len_safe_embeddings(
         self,
         texts: List[str],
     ) -> List[List[float]]:
+        
         embeddings: List[List[float]] = [[] for _ in range(len(texts))]
-        try:
-            import tiktoken
-        except ImportError:
-            raise ImportError(
-                "Could not import tiktoken python package. "
-                "This is needed in order to for OpenAIEmbeddings. "
-                "Please install it with `pip install tiktoken`."
-            )
 
-        tokens = []
-        indices = []
-        model_name = self.tiktoken_model_name or self.embedding_model
-        try:
-            encoding = tiktoken.encoding_for_model(model_name)
-        except KeyError:
-            logger.warn("Warning: model not found. Using cl100k_base encoding.")
-            model = "cl100k_base"
-            encoding = tiktoken.get_encoding(model)
-        for i, text in enumerate(texts):
-            token = encoding.encode(
-                text,
-                allowed_special=self.allowed_special,
-                disallowed_special=self.disallowed_special,
-            )
-            for j in range(0, len(token), self.embedding_ctx_length):
-                tokens.append(token[j : j + self.embedding_ctx_length])
-                indices.append(i)
+        chunk_texts: List[List[float]]=[[] for _ in range(len(texts))]
 
-        batched_embeddings: List[List[float]] = []
-        _chunk_size = self.chunk_size
-        _iter = range(0, len(tokens), _chunk_size)
+        chunk_embed: List[List[float]]=[[] for _ in range(len(texts))]
 
-        for i in _iter:
-            response = self.embed_with_retry(
-                input=tokens[i : i + self.chunk_size],
-                **self._emb_invocation_params,
-            )
-            batched_embeddings.extend(r.embedding for r in response.data)
+        if self.chunk_size is None:
+            self.chunk_size=2048
+        
+        #simple chunk
+        for i,text in enumerate(texts):
+            sub_text=[]
+            for j in range(0,len(text),self.chunk_size):
+                if j+self.chunk_size<=len(text):
+                    sub_text.append(text[j:j+self.chunk_size])
+                else:
+                    sub_text.append(text[j:])
+            chunk_texts[i]=sub_text
 
-        results: List[List[List[float]]] = [[] for _ in range(len(texts))]
-        num_tokens_in_batch: List[List[int]] = [[] for _ in range(len(texts))]
-        for i in range(len(indices)):
-            if self.skip_empty and len(batched_embeddings[i]) == 1:
-                continue
-            results[indices[i]].append(batched_embeddings[i])
-            num_tokens_in_batch[indices[i]].append(len(tokens[i]))
+        #embedding
+        for i, chunk in enumerate(chunk_texts):
+            sub_embed=[]
+            for _,text_chunk in enumerate(chunk):
+                response=self.client.embeddings.create(
+                    input=text_chunk,
+                    **self._emb_invocation_params
 
-        for i in range(len(texts)):
-            _result = results[i]
-            if len(_result) == 0:
-                average = self.embed_with_retry(
-                    input="",
-                    **self._emb_invocation_params,
-                ).data[0].embedding
-            else:
-                average = np.average(_result, axis=0, weights=num_tokens_in_batch[i])
-            embeddings[i] = (average / np.linalg.norm(average)).tolist()
+                ).model_dump_json()
+
+                response=json.loads(response)
+                sub_embed.append(response['data'][0]['embedding'])
+            chunk_embed[i]=sub_embed
+        
+        #average embedding
+        for _,embed in enumerate(chunk_embed):
+            average_embed=np.average(embed,axis=0).tolist()
+            embeddings[i]=average_embed
 
         return embeddings
     
@@ -815,34 +782,6 @@ class OpenAIProvider(OpenAIProvider_):
         seed: int = config.seed,
         max_tokens: int = config.max_tokens,
     ) -> Tuple[str, Dict[str, int]]:
-        """Create a chat completion using the OpenAI API
-
-        Supports both GPT-4 and GPT-4V).
-
-        Example Usage:
-        image_path = "path_to_your_image.jpg"
-        base64_image = encode_image(image_path)
-        response, info = self.create_completion(
-            model="gpt-4-vision-preview",
-            messages=[
-              {
-                "role": "user",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "What’s in this image?"
-                  },
-                  {
-                    "type": "image_url",
-                    "image_url": {
-                      "url": f"data:image/jpeg;base64,{base64_image}"
-                    }
-                  }
-                ]
-              }
-            ],
-        )
-        """
 
         if model is None:
             model = self.llm_model
@@ -870,21 +809,11 @@ class OpenAIProvider(OpenAIProvider_):
         ) -> Tuple[str, Dict[str, int]]:
 
             """Send a request to the OpenAI API."""
-            if self.provider_cfg[PROVIDER_SETTING_IS_AZURE]:
-                response = self.client.chat.completions.create(model=model,
-                messages=messages,
-                temperature=temperature,
-                seed=seed,
-                max_tokens=max_tokens,)
-            elif model.startswith("o3"):
-                response = self.client.chat.completions.create(model=model,
-                messages=messages,
-                temperature=temperature,
-                seed=seed,
-                max_completion_tokens=max_tokens,)
-            #此处添加一个elif，对于本地部署的模型读取方式有些不同
-            else:
-                response = self.client.chat.completions.create(model=model,
+            print(messages)
+            assert 1==0
+            if "qwen" in model:
+                response = self.client.chat.completions.create(
+                model=model,
                 messages=messages,
                 temperature=temperature,
                 seed=seed,

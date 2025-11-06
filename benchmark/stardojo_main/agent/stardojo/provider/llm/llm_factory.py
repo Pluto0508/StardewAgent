@@ -1,6 +1,5 @@
 from stardojo.provider.llm.openai import OpenAIProvider
 from stardojo.provider.llm.claude import ClaudeProvider
-from stardojo.provider.llm.gemini import GeminiProvider
 from stardojo.utils import Singleton
 
 
@@ -17,12 +16,12 @@ class LLMFactory(metaclass=Singleton):
 
         key = llm_provider_config_path
 
-        if "opensrc" in key:
+        if "qwen" in key:
             llm_provider = OpenAIProvider(is_opensource=True)
-            llm_provider.init_provider(llm_provider_config_path)
+            llm_provider.init_provider(llm_provider_config_path,'critic')
             # embed_provider = llm_provider
-            embed_provider = OpenAIProvider()
-            embed_provider.init_provider(embed_provider_config_path)
+            embed_provider = OpenAIProvider(is_opensource=True)
+            embed_provider.init_provider(embed_provider_config_path,'embedding')
 
         if "openai" in key:
             llm_provider = OpenAIProvider()

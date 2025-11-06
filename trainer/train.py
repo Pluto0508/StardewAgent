@@ -19,8 +19,8 @@ def run_critic(
     task_id: int,
     checkpoint_interval: int = 5,
     env_config_path: str = "./conf/env_config_stardew.json",
-    llm_config_path: str = "./conf/openai_config.json",
-    embed_config_path: str = "./conf/openai_config.json"
+    llm_config_path: str = r"F:\project\StardewAgent\agent\provider\configs\qwen_conf.json",
+    embed_config_path: str = r"F:\project\StardewAgent\agent\provider\configs\qwen_conf.json"
 ):
 
     logging.basicConfig(

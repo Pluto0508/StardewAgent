@@ -4,11 +4,18 @@
         "prefix":"lora",
         "bits":"fp16"
     },
-    "critic":{
-        "model_name":"qwen2.5-vl-7b-instruct",
-        "api_url":"123",
-        "api_key":"123"
+    "critic_conf":{
+        "critic_name":"qwen2.5-vl-7b-instruct",
+        "api_url":"https://dashscope.aliyuncs.com/compatible-mode/v1",
+        "api_key":"sk-63658477d86645e7b918e8dfec7a4a2b",
+        "is_azure":false
     },
-    "embedding_name": "embedding_model"
+    "embedding_conf": {
+        "embedding_name":"text-embedding-v3",
+        "api_url":"https://dashscope.aliyuncs.com/compatible-mode/v1",
+        "api_key":"sk-63658477d86645e7b918e8dfec7a4a2b",
+        "is_azure":false
+
+    }
 
 }

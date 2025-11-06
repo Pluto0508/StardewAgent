@@ -4,7 +4,7 @@ import sys
 
 def set_path():
     #root
-    project_root=Path(__file__).parent
+    project_root=Path(__file__).parent.parent
     #root parent
     root_parent=project_root.parent
     #agent 
