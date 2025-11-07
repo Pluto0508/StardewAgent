@@ -389,7 +389,7 @@ class PipelineRunner():
         processed_response = deepcopy(response)
 
         skill_steps = []
-        if 'actions' in response:
+        if 'actions' in response or 'Action' in response:
             skill_steps = response['actions']
 
         if skill_steps:

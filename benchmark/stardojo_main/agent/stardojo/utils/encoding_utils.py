@@ -2,6 +2,7 @@ import base64
 import os
 from typing import Any, List
 import io
+from pathlib import Path
 
 import numpy as np
 import cv2
@@ -57,8 +58,13 @@ def encode_data_to_base64_path(data: Any) -> List[str]:
 
     for item in data:
         if isinstance(item, str):
-            if os.path.exists(assemble_project_path(item)):
-                path = assemble_project_path(item)
+            item=item.replace("..","")
+            item=item.replace("/","\\")
+            current_path=Path(__file__).parent.parent.parent
+            processed_item=os.path.join(current_path,item)
+            
+            if os.path.exists(processed_item):
+                path = processed_item
                 encoded_image = encode_image_path(path)
                 image_type = path.split(".")[-1].lower()
                 encoded_image = f"data:image/{image_type};base64,{encoded_image}"

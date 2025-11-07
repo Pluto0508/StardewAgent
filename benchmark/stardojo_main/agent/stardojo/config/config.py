@@ -37,7 +37,7 @@ class Config(metaclass=Singleton):
     DEFAULT_OCR_CROP_REGION = (380, 720, 1920, 1080) # x1, y1, x2, y2, from top left to bottom right
 
     root_dir = '.'
-    work_dir_base = './runs'
+    work_dir_base = '..\\runs'
 
     # Env parameters
     env_name = "-"

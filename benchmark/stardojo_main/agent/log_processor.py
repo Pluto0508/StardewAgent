@@ -111,7 +111,7 @@ def process_string(input_str):
 
 def process_log_messages(work_dir):
 
-    log_path = os.path.join(work_dir, "logs/stardojo.log")
+    log_path = os.path.join(work_dir, "logs\\stardojo.log")
 
     with open(log_path, "r", encoding="utf-8") as fd:
         log = fd.read()
@@ -177,7 +177,7 @@ def main(args):
 
     log = process_log_messages(path)
 
-    with open(path + '/logs/stardojo_log.md', 'w', encoding="utf-8") as f:
+    with open(path + '\\logs\\stardojo_log.md', 'w', encoding="utf-8") as f:
         f.write(log)
 
 

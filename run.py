@@ -16,7 +16,7 @@ def main():
     from trainer.train import run_critic
     ##要输入处理好的路径
     run_critic(
-        port=6000,
+        port=10783,
         save_index=0,
         new_game=False,
         image_save_path="../env/screen_shot_buffer",

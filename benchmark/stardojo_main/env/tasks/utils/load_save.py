@@ -2,10 +2,13 @@ import os
 import platform
 import shutil
 import time
+from pathlib import Path
 
 from .init_task import InitTaskProxy
 
-SAVE_SOURCE = "tasks/saves"
+current_path=Path(__file__).parent.parent.parent
+SAVE_SOURCE = os.path.join(current_path,"tasks\\saves")
+
 
 
 def get_save_path() -> str:

@@ -13,6 +13,7 @@ from typing import (
 import json
 import re
 import asyncio
+from pathlib import Path
 
 import backoff
 import tiktoken
@@ -611,6 +612,7 @@ class OpenAIProvider_(LLMProvider, EmbeddingProvider):
             print(f"imagepaths: {paths}")
             print("--------------------------------")
             encoded_images = []
+            #current_path=Path(__file__).parent.parent.parent
             for i, path in enumerate(paths):
                 if path is not None and path != "":
                     encoded_images.append(encode_data_to_base64_path(path)[0] if isinstance(encode_data_to_base64_path(path), list) else encode_data_to_base64_path(path))
@@ -622,11 +624,8 @@ class OpenAIProvider_(LLMProvider, EmbeddingProvider):
                     "text": f"{msg_text}"
                 })
                 msg_content = {
-                    "type": "image_url",
-                    "image_url":
-                        {
-                            "url": f"{encoded_image}"
-                        }
+                    "type":"image_url",
+                    "image_url":f"{encoded_image}"
                 }
                 combined_user_message["content"].append(msg_content)
 
@@ -809,9 +808,7 @@ class OpenAIProvider(OpenAIProvider_):
         ) -> Tuple[str, Dict[str, int]]:
 
             """Send a request to the OpenAI API."""
-            print(messages)
-            assert 1==0
-            if "qwen" in model:
+            if "qwen" in model or "embedding" in model:
                 response = self.client.chat.completions.create(
                 model=model,
                 messages=messages,
@@ -824,6 +821,7 @@ class OpenAIProvider(OpenAIProvider_):
                 logger.double_check()
 
             message = response.choices[0].message.content
+            print(message)
 
             info = {
                 "prompt_tokens" : response.usage.prompt_tokens,
