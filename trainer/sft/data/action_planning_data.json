@@ -1,0 +1,551 @@
+{
+  "training_data": [
+    {
+      "id": 1,
+      "exist_information": "Current temperature is 25°C, humidity is 60%, and weather forecast predicts rain in 3 hours.",
+      "goal": "Decide whether to water the plants in the garden.",
+      "reasoning": [
+        "1. Current temperature and humidity are within acceptable ranges for most plants",
+        "2. Predicted rain in 3 hours will provide natural watering",
+        "3. Watering now would be wasteful and potentially cause overwatering"
+      ],
+      "actions": "```python\n    check_soil_moisture(garden_area=\"front_lawn\")\n    monitor_weather_updates()\n```"
+    },
+    {
+      "id": 2,
+      "exist_information": "Inventory shows 50 units of Product A, 20 units of Product B. Sales data indicates high demand for Product A.",
+      "goal": "Optimize inventory management for the next week.",
+      "reasoning": [
+        "1. Product A has high demand and current stock may not last the week",
+        "2. Product B has adequate stock based on current sales trends",
+        "3. Need to balance inventory costs with customer satisfaction"
+      ],
+      "actions": "```python\n    reorder_product(product_id=\"A\", quantity=100)\n    analyze_sales_trends(time_period=\"last_month\")\n```"
+    },
+    {
+      "id": 3,
+      "exist_information": "User has completed 8 out of 10 modules in the online course. Average score on completed modules is 85%.",
+      "goal": "Determine if the user is ready for the final exam.",
+      "reasoning": [
+        "1. User has completed majority of course content successfully",
+        "2. Current performance indicates good understanding of material",
+        "3. Remaining modules cover advanced topics that are important for exam"
+      ],
+      "actions": "```python\n    calculate_readiness_score(completed_modules=8, average_score=85)\n    schedule_practice_exam(days_before=2)\n```"
+    },
+    {
+      "id": 4,
+      "exist_information": "Server CPU usage is at 85%, memory usage is at 70%. Number of active users: 1500.",
+      "goal": "Ensure server stability during peak hours.",
+      "reasoning": [
+        "1. High CPU usage indicates potential performance issues",
+        "2. Memory usage is within acceptable limits",
+        "3. Current user load is approaching server capacity"
+      ],
+      "actions": "```python\n    scale_server_resources(cpu_boost=true, memory_boost=false)\n    monitor_performance_metrics(duration=\"next_4_hours\")\n```"
+    },
+    {
+      "id": 5,
+      "exist_information": "Customer has purchased 5 items in the last month, total value $250. Customer rating: 4.8/5.",
+      "goal": "Decide on customer loyalty rewards.",
+      "reasoning": [
+        "1. Customer shows consistent purchasing behavior",
+        "2. High customer rating indicates satisfaction with service",
+        "3. Current spending level qualifies for basic loyalty benefits"
+      ],
+      "actions": "```python\n    apply_loyalty_discount(customer_id=\"12345\", discount_percent=10)\n    send_personalized_offer(category=\"frequently_purchased\")\n```"
+    },
+    {
+      "id": 6,
+      "exist_information": "Project deadline is in 5 days. Current completion: 70%. Team velocity: 15% per day.",
+      "goal": "Assess if project will be completed on time.",
+      "reasoning": [
+        "1. Current progress suggests 4.6 days needed for completion",
+        "2. Available time is 5 days, providing small buffer",
+        "3. Should monitor progress daily to ensure timeline is met"
+      ],
+      "actions": "```python\n    calculate_remaining_work(days_remaining=5, completion_rate=70)\n    adjust_resource_allocation(if_needed=true)\n```"
+    },
+    {
+      "id": 7,
+      "exist_information": "Battery level: 15%. Next charging station: 10km away. Estimated range: 25km.",
+      "goal": "Determine if vehicle can reach charging station.",
+      "reasoning": [
+        "1. Current battery level provides adequate range for the distance",
+        "2. Safety margin exists with estimated range exceeding required distance",
+        "3. Should proceed to charging station while monitoring battery consumption"
+      ],
+      "actions": "```python\n    navigate_to_charging_station(station_id=\"CS_001\")\n    optimize_energy_consumption(speed_limit=60)\n```"
+    },
+    {
+      "id": 8,
+      "exist_information": "Stock price: $150. 50-day moving average: $145. RSI: 65.",
+      "goal": "Make buy/sell/hold decision for the stock.",
+      "reasoning": [
+        "1. Current price is above moving average indicating bullish trend",
+        "2. RSI at 65 suggests stock is approaching overbought territory",
+        "3. Current indicators support holding position with close monitoring"
+      ],
+      "actions": "```python\n    analyze_technical_indicators(price_data=\"last_3_months\")\n    set_price_alert(threshold=160, action=\"sell_review\")\n```"
+    },
+    {
+      "id": 9,
+      "exist_information": "Patient temperature: 38.5°C. Symptoms: cough, headache. Duration: 2 days.",
+      "goal": "Determine appropriate medical response.",
+      "reasoning": [
+        "1. Fever and symptoms suggest possible infection",
+        "2. Duration of 2 days indicates condition may be progressing",
+        "3. Recommend medical consultation for proper diagnosis"
+      ],
+      "actions": "```python\n    schedule_doctor_appointment(urgency=\"within_24_hours\")\n    recommend_symptom_relief(medication=\"acetaminophen\")\n```"
+    },
+    {
+      "id": 10,
+      "exist_information": "Website traffic: 5000 visitors/day. Conversion rate: 2%. Average order value: $75.",
+      "goal": "Improve online sales performance.",
+      "reasoning": [
+        "1. Current conversion rate is below industry average",
+        "2. Traffic volume is good but not converting effectively",
+        "3. Focus should be on optimizing user experience and checkout process"
+      ],
+      "actions": "```python\n    analyze_user_behavior(funnel_stage=\"checkout\")\n    implement_ab_testing(variations=3)\n```"
+    },
+    {
+      "id": 11,
+      "exist_information": "Car fuel level: 1/4 tank. Distance to destination: 200km. Fuel efficiency: 8km/L.",
+      "goal": "Plan fuel stops for the journey.",
+      "reasoning": [
+        "1. Current fuel provides approximately 50km range based on efficiency",
+        "2. Destination is beyond current range, requiring refueling",
+        "3. Should identify fuel stations along the route for refueling"
+      ],
+      "actions": "```python\n    calculate_fuel_requirements(distance=200, efficiency=8)\n    locate_fuel_stations(radius=25)\n```"
+    },
+    {
+      "id": 12,
+      "exist_information": "Team has won 8 out of 12 games this season. Current ranking: 3rd place. Upcoming opponent: 1st place team.",
+      "goal": "Develop game strategy for upcoming match.",
+      "reasoning": [
+        "1. Current win rate of 67% indicates strong performance",
+        "2. Facing top-ranked team requires strategic approach",
+        "3. Should focus on defensive tactics while exploiting opponent weaknesses"
+      ],
+      "actions": "```python\n    analyze_opponent_stats(previous_matches=5)\n    adjust_lineup_strategy(opponent_style=\"offensive\")\n```"
+    },
+    {
+      "id": 13,
+      "exist_information": "Oven temperature: 180°C. Cake baking time elapsed: 25 minutes. Recipe requires 30-35 minutes.",
+      "goal": "Determine when to check cake for doneness.",
+      "reasoning": [
+        "1. Current baking time is approaching minimum recommended duration",
+        "2. Oven temperature is correct for recipe requirements",
+        "3. Should check cake in 5 minutes using toothpick test"
+      ],
+      "actions": "```python\n    monitor_baking_progress(time_remaining=5)\n    prepare_cooling_rack()\n```"
+    },
+    {
+      "id": 14,
+      "exist_information": "Bank account balance: $2,500. Monthly expenses: $3,000. Emergency fund: $5,000.",
+      "goal": "Assess financial stability for the upcoming month.",
+      "reasoning": [
+        "1. Current balance is insufficient for monthly expenses",
+        "2. Emergency fund can cover the deficit if needed",
+        "3. Should review expenses to identify potential savings"
+      ],
+      "actions": "```python\n    analyze_spending_categories(period=\"last_3_months\")\n    create_budget_plan(income=\"monthly\", savings_target=10)\n```"
+    },
+    {
+      "id": 15,
+      "exist_information": "Plant soil moisture: 30%. Optimal range: 40-60%. Last watered: 3 days ago.",
+      "goal": "Maintain optimal plant health through proper watering.",
+      "reasoning": [
+        "1. Current moisture level is below optimal range",
+        "2. Time since last watering suggests normal drying cycle",
+        "3. Should water plants to bring moisture to optimal level"
+      ],
+      "actions": "```python\n    water_plants(amount=\"moderate\", area=\"all_plants\")\n    schedule_next_watering(days=2)\n```"
+    },
+    {
+      "id": 16,
+      "exist_information": "Current time: 14:30. Meeting scheduled: 15:00. Travel time to meeting: 25 minutes.",
+      "goal": "Ensure timely arrival at important meeting.",
+      "reasoning": [
+        "1. Current time provides adequate buffer for travel",
+        "2. Should account for potential traffic delays",
+        "3. Planning to leave at 14:35 provides comfortable margin"
+      ],
+      "actions": "```python\n    prepare_meeting_materials(documents=\"presentation_slides\")\n    set_departure_reminder(time=\"14:35\")\n```"
+    },
+    {
+      "id": 17,
+      "exist_information": "CPU temperature: 75°C. Maximum safe temperature: 85°C. Cooling fan speed: 70%.",
+      "goal": "Prevent computer overheating during intensive tasks.",
+      "reasoning": [
+        "1. Current temperature is approaching but below maximum limit",
+        "2. Fan speed is adequate but could be optimized",
+        "3. Should monitor temperature closely during continued usage"
+      ],
+      "actions": "```python\n    adjust_fan_speed(target_temperature=70)\n    reduce_workload_intensity(duration=\"next_hour\")\n```"
+    },
+    {
+      "id": 18,
+      "exist_information": "Book reading progress: page 150 out of 300. Reading speed: 30 pages/hour. Available time: 3 hours.",
+      "goal": "Determine if book can be finished in available time.",
+      "reasoning": [
+        "1. Remaining 150 pages would require 5 hours at current speed",
+        "2. Available time is insufficient for completion",
+        "3. Should plan reading sessions over multiple days"
+      ],
+      "actions": "```python\n    calculate_reading_schedule(pages_remaining=150, available_hours=3)\n    set_reading_reminders(daily_target=50)\n```"
+    },
+    {
+      "id": 19,
+      "exist_information": "Exercise routine: completed 4 days this week. Goal: 5 days per week. Remaining days: 2.",
+      "goal": "Achieve weekly exercise goal.",
+      "reasoning": [
+        "1. Current progress is 80% toward weekly goal",
+        "2. Two remaining days provide opportunity to meet target",
+        "3. Should schedule one additional workout session"
+      ],
+      "actions": "```python\n    schedule_workout(day=\"tomorrow\", duration=45)\n    track_progress_metrics(weekly_goal=5)\n```"
+    },
+    {
+      "id": 20,
+      "exist_information": "Social media post engagement: 150 likes, 25 comments. Average engagement: 200 likes, 30 comments.",
+      "goal": "Improve social media content performance.",
+      "reasoning": [
+        "1. Current engagement is below average performance",
+        "2. Should analyze content type and timing for optimization",
+        "3. Consider testing different posting strategies"
+      ],
+      "actions": "```python\n    analyze_engagement_patterns(time_period=\"last_month\")\n    optimize_posting_schedule(based_on_analytics=true)\n```"
+    },
+    {
+      "id": 21,
+      "exist_information": "Grocery list: 15 items. Store layout: organized by category. Shopping time available: 45 minutes.",
+      "goal": "Complete grocery shopping efficiently.",
+      "reasoning": [
+        "1. Number of items suggests shopping time of 30-40 minutes",
+        "2. Store organization allows for efficient route planning",
+        "3. Available time is adequate for completing the shopping"
+      ],
+      "actions": "```python\n    optimize_shopping_route(store_layout=\"categorical\")\n    estimate_shopping_duration(items_count=15)\n```"
+    },
+    {
+      "id": 22,
+      "exist_information": "Flight departure: 18:00. Current time: 14:00. Airport security wait time: average 30 minutes.",
+      "goal": "Plan airport arrival time for domestic flight.",
+      "reasoning": [
+        "1. Recommended airport arrival is 2 hours before departure",
+        "2. Current time provides 4-hour buffer before recommended arrival",
+        "3. Should plan to arrive at airport by 16:00"
+      ],
+      "actions": "```python\n    calculate_travel_time(home_to_airport=45)\n    set_departure_alarm(time=\"15:15\")\n```"
+    },
+    {
+      "id": 23,
+      "exist_information": "Recipe ingredients available: 8 out of 10. Missing: fresh basil, parmesan cheese.",
+      "goal": "Determine if recipe can be prepared with available ingredients.",
+      "reasoning": [
+        "1. Most ingredients are available, missing only two items",
+        "2. Missing ingredients are flavorful but not structural to the dish",
+        "3. Can proceed with recipe using suitable substitutes"
+      ],
+      "actions": "```python\n    find_ingredient_substitutes(missing_items=[\"basil\", \"parmesan\"])\n    adjust_recipe_instructions(substitutions=true)\n```"
+    },
+    {
+      "id": 24,
+      "exist_information": "Project budget used: $8,000 out of $10,000. Remaining tasks: 40% of project scope.",
+      "goal": "Ensure project completion within budget constraints.",
+      "reasoning": [
+        "1. Current spending is 80% of budget with 40% work remaining",
+        "2. Budget allocation needs adjustment to complete remaining work",
+        "3. Should review task priorities and resource allocation"
+      ],
+      "actions": "```python\n    analyze_budget_allocation(remaining_tasks=40)\n    optimize_resource_utilization(cost_reduction=true)\n```"
+    },
+    {
+      "id": 25,
+      "exist_information": "Email inbox: 50 unread messages. Priority emails: approximately 10. Available time: 1 hour.",
+      "goal": "Efficiently process important emails.",
+      "reasoning": [
+        "1. Priority emails require immediate attention",
+        "2. Available time is sufficient for processing critical messages",
+        "3. Should focus on high-priority emails first"
+      ],
+      "actions": "```python\n    filter_emails_by_priority(threshold=\"high\")\n    schedule_email_processing(time_slots=[\"morning\", \"afternoon\"])\n```"
+    },
+    {
+      "id": 26,
+      "exist_information": "Car maintenance due: oil change, tire rotation. Last service: 5,000 km ago. Current mileage: 15,000 km.",
+      "goal": "Schedule appropriate vehicle maintenance.",
+      "reasoning": [
+        "1. Maintenance schedule is based on mileage intervals",
+        "2. Current mileage indicates service is due",
+        "3. Should schedule appointment within next week"
+      ],
+      "actions": "```python\n    schedule_maintenance_appointment(services=[\"oil_change\", \"tire_rotation\"])\n    order_required_parts(if_needed=true)\n```"
+    },
+    {
+      "id": 27,
+      "exist_information": "Study session completed: 2 hours. Topics covered: 3 out of 5. Exam in: 3 days.",
+      "goal": "Prepare effectively for upcoming exam.",
+      "reasoning": [
+        "1. Current study progress covers 60% of required topics",
+        "2. Available time is adequate for remaining preparation",
+        "3. Should create study schedule for remaining topics"
+      ],
+      "actions": "```python\n    create_study_plan(topics_remaining=2, days_available=3)\n    schedule_review_sessions(frequency=\"daily\")\n```"
+    },
+    {
+      "id": 28,
+      "exist_information": "Investment portfolio value: $50,000. Market volatility: high. Target return: 8% annually.",
+      "goal": "Make investment decisions in volatile market conditions.",
+      "reasoning": [
+        "1. Current market conditions require cautious approach",
+        "2. Portfolio diversification should be reviewed",
+        "3. Should consider rebalancing to reduce risk exposure"
+      ],
+      "actions": "```python\n    analyze_portfolio_risk(current_allocation=\"equity_heavy\")\n    adjust_investment_strategy(risk_tolerance=\"moderate\")\n```"
+    },
+    {
+      "id": 29,
+      "exist_information": "Website load time: 4 seconds. Industry standard: under 3 seconds. Bounce rate: 40%.",
+      "goal": "Improve website performance and user experience.",
+      "reasoning": [
+        "1. Current load time exceeds recommended standards",
+        "2. High bounce rate suggests user dissatisfaction with performance",
+        "3. Should prioritize performance optimization"
+      ],
+      "actions": "```python\n    optimize_website_performance(target_load_time=2.5)\n    implement_performance_monitoring()\n```"
+    },
+    {
+      "id": 30,
+      "exist_information": "Team member availability: 3 out of 5 available. Project deadline: 2 days. Critical tasks remaining: 8.",
+      "goal": "Ensure project completion with reduced team capacity.",
+      "reasoning": [
+        "1. Current team capacity is reduced by 40%",
+        "2. Remaining tasks require careful prioritization",
+        "3. Should focus on essential deliverables first"
+      ],
+      "actions": "```python\n    prioritize_tasks(criteria=\"deadline_urgency\")\n    redistribute_workload(available_members=3)\n```"
+    },
+    {
+      "id": 31,
+      "exist_information": "Energy consumption: 120 kWh this month. Average consumption: 100 kWh. Cost per kWh: $0.15.",
+      "goal": "Identify and address increased energy usage.",
+      "reasoning": [
+        "1. Current consumption is 20% above average",
+        "2. Should investigate causes of increased usage",
+        "3. Consider implementing energy-saving measures"
+      ],
+      "actions": "```python\n    analyze_energy_patterns(time_period=\"last_3_months\")\n    identify_consumption_peaks()\n```"
+    },
+    {
+      "id": 32,
+      "exist_information": "Customer satisfaction score: 4.2/5. Previous quarter: 4.5/5. Number of complaints: 15 this month.",
+      "goal": "Improve customer service quality.",
+      "reasoning": [
+        "1. Declining satisfaction score indicates service issues",
+        "2. Increased complaints require immediate attention",
+        "3. Should review service processes and staff training"
+      ],
+      "actions": "```python\n    analyze_complaint_patterns(category=\"service_quality\")\n    implement_service_improvements()\n```"
+    },
+    {
+      "id": 33,
+      "exist_information": "Production line output: 95 units/hour. Target: 100 units/hour. Defect rate: 2%.",
+      "goal": "Optimize manufacturing efficiency.",
+      "reasoning": [
+        "1. Current output is 5% below target",
+        "2. Defect rate is within acceptable limits",
+        "3. Should identify bottlenecks in production process"
+      ],
+      "actions": "```python\n    analyze_production_bottlenecks(metrics=[\"speed\", \"quality\"])\n    optimize_manufacturing_parameters()\n```"
+    },
+    {
+      "id": 34,
+      "exist_information": "Learning progress: 6 courses completed out of 10. Average score: 88%. Time remaining: 2 months.",
+      "goal": "Complete certification program successfully.",
+      "reasoning": [
+        "1. Current progress is 60% with adequate time remaining",
+        "2. Performance level is strong and consistent",
+        "3. Should maintain current study pace"
+      ],
+      "actions": "```python\n    track_learning_progress(courses_remaining=4)\n    schedule_study_sessions(weekly_hours=15)\n```"
+    },
+    {
+      "id": 35,
+      "exist_information": "Hotel occupancy rate: 85% this week. Average: 70%. Staff availability: 90%.",
+      "goal": "Manage hotel operations during peak occupancy period.",
+      "reasoning": [
+        "1. High occupancy requires optimal staff allocation",
+        "2. Should ensure guest services are maintained at high standard"
+      ],
+      "actions": "```python\n    optimize_staff_scheduling(occupancy_rate=85)\n    monitor_guest_satisfaction()\n```"
+    },
+    {
+      "id": 36,
+      "exist_information": "Sales target: $100,000 this quarter. Current sales: $75,000. Time remaining: 1 month.",
+      "goal": "Achieve quarterly sales target.",
+      "reasoning": [
+        "1. Current progress is 75% with one-third of time remaining",
+        "2. Current pace suggests target will be met",
+        "3. Should continue current sales strategies"
+      ],
+      "actions": "```python\n    analyze_sales_performance(period=\"current_quarter\")\n    identify_high_potential_leads()\n```"
+    },
+    {
+      "id": 37,
+      "exist_information": "Fitness tracker data: 8,000 steps today. Daily goal: 10,000 steps. Time remaining in day: 4 hours.",
+      "goal": "Achieve daily step count goal.",
+      "reasoning": [
+        "1. Current step count is 80% of daily goal",
+        "2. Remaining time is adequate for achieving target",
+        "3. Should incorporate walking into remaining activities"
+      ],
+      "actions": "```python\n    schedule_additional_walking(time_slots=[\"evening\"])\n    set_activity_reminders(interval=60)\n```"
+    },
+    {
+      "id": 38,
+      "exist_information": "Code coverage: 85%. Target: 90%. Number of tests: 150.",
+      "goal": "Improve software testing quality.",
+      "reasoning": [
+        "1. Current coverage is close to target",
+        "2. Should focus on testing critical uncovered code paths",
+        "3. Additional tests should target high-risk functionality"
+      ],
+      "actions": "```python\n    analyze_code_coverage_gaps()\n    write_additional_tests(priority=\"high_risk\")\n```"
+    },
+    {
+      "id": 39,
+      "exist_information": "Meeting attendees: 8 out of 10 confirmed. Agenda items: 5 out of 7 prepared. Time until meeting: 1 hour.",
+      "goal": "Ensure productive team meeting.",
+      "reasoning": [
+        "1. High attendance rate indicates good participation",
+        "2. Most agenda items are ready for discussion",
+        "3. Should finalize remaining preparations"
+      ],
+      "actions": "```python\n    prepare_meeting_materials(remaining_items=2)\n    send_meeting_reminder()\n```"
+    },
+    {
+      "id": 40,
+      "exist_information": "Customer retention rate: 80% this year. Industry average: 75%. Competitor rate: 82%.",
+      "goal": "Maintain competitive customer retention.",
+      "reasoning": [
+        "1. Current retention is above industry average",
+        "2. Slightly below top competitor performance",
+        "3. Should implement customer loyalty programs"
+      ],
+      "actions": "```python\n    analyze_customer_churn_patterns()\n    develop_retention_strategies()\n```"
+    },
+    {
+      "id": 41,
+      "exist_information": "Project risks identified: 12. High-priority risks: 3. Mitigation plans: 8 completed.",
+      "goal": "Manage project risks effectively.",
+      "reasoning": [
+        "1. Majority of risks have mitigation plans in place",
+        "2. Three high-priority risks require immediate attention",
+        "3. Should prioritize risk mitigation efforts"
+      ],
+      "actions": "```python\n    prioritize_risk_mitigation(risk_level=\"high\")\n    monitor_risk_indicators()\n```"
+    },
+    {
+      "id": 42,
+      "exist_information": "Social media followers: 10,000. Growth rate: 5% per month. Engagement rate: 3%.",
+      "goal": "Grow social media presence and engagement.",
+      "reasoning": [
+        "1. Current growth rate is healthy and sustainable",
+        "2. Engagement rate could be improved with better content strategy"
+      ],
+      "actions": "```python\n    analyze_engagement_metrics(platform=\"instagram\")\n    optimize_content_calendar()\n```"
+    },
+    {
+      "id": 43,
+      "exist_information": "Employee satisfaction survey: 4.1/5. Previous year: 4.3/5. Turnover rate: 8%.",
+      "goal": "Improve workplace culture and employee retention.",
+      "reasoning": [
+        "1. Declining satisfaction scores indicate areas for improvement",
+        "2. Turnover rate is within acceptable range but could be better",
+        "3. Should address specific concerns raised in survey"
+      ],
+      "actions": "```python\n    implement_employee_feedback(survey_results=\"current\")\n    schedule_team_building_activities()\n```"
+    },
+    {
+      "id": 44,
+      "exist_information": "Marketing campaign CTR: 2.5%. Industry average: 2%. Conversion rate: 15%.",
+      "goal": "Evaluate marketing campaign effectiveness.",
+      "reasoning": [
+        "1. Current CTR is above industry average",
+        "2. Conversion rate is strong for the industry",
+        "3. Should continue current campaign strategy"
+      ],
+      "actions": "```python\n    analyze_campaign_performance(metrics=[\"CTR\", \"conversion\"])\n    optimize_ad_spend(allocation=\"high_performing\")\n```"
+    },
+    {
+      "id": 45,
+      "exist_information": "Software bug reports: 15 this week. Critical bugs: 3. Average resolution time: 2 days.",
+      "goal": "Improve software quality and bug resolution efficiency.",
+      "reasoning": [
+        "1. Number of bug reports suggests quality issues",
+        "2. Critical bugs require immediate attention",
+        "3. Should improve testing and quality assurance processes"
+      ],
+      "actions": "```python\n    prioritize_bug_fixes(severity=\"critical\")\n    implement_quality_metrics()\n```"
+    },
+    {
+      "id": 46,
+      "exist_information": "Training program completion: 80 employees. Target: 100. Time remaining: 2 weeks.",
+      "goal": "Achieve employee training targets.",
+      "reasoning": [
+        "1. Current progress is 80% with adequate time remaining",
+        "2. Should focus on scheduling remaining training sessions"
+      ],
+      "actions": "```python\n    schedule_remaining_training(employees_remaining=20)\n    track_training_completion()\n```"
+    },
+    {
+      "id": 47,
+      "exist_information": "Customer support response time: 2 hours. Target: 1 hour. Customer satisfaction: 85%.",
+      "goal": "Enhance customer support service quality.",
+      "reasoning": [
+        "1. Current response time exceeds target",
+        "2. High satisfaction suggests quality compensates for delay",
+        "3. Should aim to improve both speed and quality"
+      ],
+      "actions": "```python\n    optimize_support_workflow()\n    implement_quality_monitoring()\n```"
+    },
+    {
+      "id": 48,
+      "exist_information": "Inventory turnover rate: 6 times per year. Industry average: 8. Storage costs: $5,000/month.",
+      "goal": "Optimize inventory management efficiency.",
+      "reasoning": [
+        "1. Current turnover rate is below industry standard",
+        "2. High storage costs indicate inefficiency",
+        "3. Should implement just-in-time inventory practices"
+      ],
+      "actions": "```python\n    analyze_inventory_patterns(categories=\"all\")\n    optimize_reorder_points()\n```"
+    },
+    {
+      "id": 49,
+      "exist_information": "Website traffic sources: organic 40%, social 25%, direct 20%, referral 15%.",
+      "goal": "Diversify website traffic sources for stability.",
+      "reasoning": [
+        "1. Current traffic is well-distributed across multiple sources",
+        "2. Heavy reliance on organic search poses some risk",
+        "3. Should strengthen social media and referral traffic"
+      ],
+      "actions": "```python\n    analyze_traffic_source_performance()\n    optimize_marketing_channels()\n```"
+    },
+    {
+      "id": 50,
+      "exist_information": "Team velocity: 35 story points per sprint. Previous sprint: 32. Target: 40.",
+      "goal": "Improve agile team performance.",
+      "reasoning": [
+        "1. Current velocity shows positive growth trend",
+        "2. Target is ambitious but achievable with continued improvement",
+        "3. Should focus on process optimization and skill development"
+      ],
+      "actions": "```python\n    analyze_team_performance_metrics()\n    implement_process_improvements()\n```"
+    }
+  ]
+}

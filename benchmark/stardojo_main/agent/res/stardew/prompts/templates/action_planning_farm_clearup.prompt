@@ -77,6 +77,7 @@ Actions: The requirements that the generated action needs to follow. The best ac
         - If the previous action was a movement, you should determine whether there is an obstacle IN FRONT OF the character. If so, you should select the suitable tool by select_tool() and clear it by use_tool(). 
         - If previous action contained use_tool(), you should move the character to the same direction as before to test if the blocking obstacle is cleared. 
         - If the blocking obstacle is not cleared, you should select a different tool to clear it.  
+    12. Don't add 'call' before action(args1=x,args2=y)
         
 
 You should only respond in the format described below, and you should not output comments or other information.

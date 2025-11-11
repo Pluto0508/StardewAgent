@@ -1,0 +1,15 @@
+The exist information is <$exist_information$>
+The target we need to achieve is <$goal$>
+
+You should only respond in the format described below, and you should not output comments or other information.
+<key>Reasoning</key>:
+<resoning>1. ...
+2. ...
+3. ...
+</resoning>
+<key>Actions</key>:
+<actions>
+```python
+    action(args1=x,args2=y)
+```
+</actions>

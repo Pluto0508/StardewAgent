@@ -60,9 +60,9 @@ def encode_data_to_base64_path(data: Any) -> List[str]:
         if isinstance(item, str):
             item=item.replace("..","")
             item=item.replace("/","\\")
-            current_path=Path(__file__).parent.parent.parent
+            current_path=Path(__file__).parent
             processed_item=os.path.join(current_path,item)
-            
+            print(processed_item)
             if os.path.exists(processed_item):
                 path = processed_item
                 encoded_image = encode_image_path(path)

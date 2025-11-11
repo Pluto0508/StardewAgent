@@ -19,7 +19,7 @@ def main():
         port=10783,
         save_index=0,
         new_game=False,
-        image_save_path="../env/screen_shot_buffer",
+        image_save_path="F:\env\screen_shot_buffer",
         output_video=False,
         task_name="farming_lite",
         task_id=0,
