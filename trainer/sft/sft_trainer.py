@@ -14,8 +14,6 @@ from optuna import trial, study
 import optuna
 from functools import partial
 
-#还需要分割数据集、配置config//还需要更改templates，希望可以生成3个动作，并给出每个动作的probability//更改tempalte为，给出几个候选动作，从这几个候选动作中给出回答
-
 class WeightedTrainer(Trainer):
     def compute_loss(self, model, inputs, return_outputs=False):
         return self.args.custom_compute_loss(model, inputs, return_outputs)
