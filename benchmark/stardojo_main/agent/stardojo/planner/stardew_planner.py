@@ -996,3 +996,30 @@ class StardewPlanner(BasePlanner):
         data = self.task_inference_(input=input)
 
         return data
+    
+##class StardewPlanner(EnhancedPlanner): 
+
+    def __init__(self,
+                 llm_provider: Any = None,
+                 planner_params: Dict = None,
+                 use_task_inference: bool = False,
+                 use_self_reflection: bool = False,
+                 gather_information_max_steps: int = 1,
+                 icon_replacer: Any = None,
+                 object_detector: Any = None,
+                 frame_extractor: Any = None,
+                 knowledge_base: Any = None,
+                 memory: Any = None):
+        
+        super().__init__(
+            llm_provider=llm_provider,
+            planner_params=planner_params,
+            use_task_inference=use_task_inference,
+            use_self_reflection=use_self_reflection,
+            information_gathering_max_steps=gather_information_max_steps,
+            icon_replacer=icon_replacer,
+            object_detector=object_detector,
+            frame_extractor=frame_extractor,
+            knowledge_base=knowledge_base,
+            memory=memory
+        )

@@ -2,6 +2,8 @@
     "task_description": "Your task is to follow the guy in front of you.",
     "previous_summarization": "This is the character in Red Dead Redemption 2.",
     "event_count": "5",
+    "knowledge_base_results": "",
+    "memory_results": "",
     "image_introduction":[
         {
             "introduction": "the first image is the first screenshot of recent events",

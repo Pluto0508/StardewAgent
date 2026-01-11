@@ -6,7 +6,5 @@
             "path": "./res/samples/stardew valley/game_screenshot.png",
             "assistant": ""
         }
-    ],
-    "few_shots": [],
-    "information_type": ["Item_status", "Environment_information", "Dialogue", "Others"]
+    ]
 }

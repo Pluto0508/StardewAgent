@@ -6,6 +6,14 @@ Current task:
 
 <$task_description$>
 
+#Knowledge Base Results: 
+<$knowledge_base_results$>
+
+Memory Results: 
+#<$memory_results$>
+
+#Use the knowledge base and memory if relevant for context, but focus on the image for number identification.
+
 Number: The number at the bottom right corner of the picture indicates the number of the item in the bag. If there is no number presented in the bottom right corner, then the number should be 1.
 
 You should not pay attention to the number at the left uppper corner of the picture because it is not relevant to the number of the item.

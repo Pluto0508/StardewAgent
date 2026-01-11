@@ -3,6 +3,8 @@
     "task_description": "",
     "previous_action": "",
     "previous_reasoning": "",
+    "knowledge_base_results": "",
+    "memory_results": "",
     "image_introduction":[
         {
             "introduction": "This screenshot is the previous step of the game",

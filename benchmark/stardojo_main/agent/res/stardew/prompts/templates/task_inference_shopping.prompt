@@ -2,6 +2,12 @@ Assume you are a helpful AI assistant integrated with 'Stardew Valley' on the PC
 
 Here is some helpful information to help you do the summarization and propose the subtask.
 
+#Knowledge Base Results: 
+<$knowledge_base_results$>
+
+Memory Results: 
+#<$memory_results$>
+
 Current task:
 <$task_description$>
 
@@ -33,7 +39,7 @@ History_summary: Summarize what happened in the past experience, especially the 
 2. Record the successful actions and organize them into events day by day.
 3. Do not forget the information and key events in the previous days.
 
-Subtask_reasoning: Decide whether the previous subtask is finished and whether it is necessary to propose a new subtask. The subtask should be straightforward, contribute to the target task and be most suitable for the current situation, which should be completed within a few actions. You should respond to me with:
+Subtask_reasoning: #Decide whether the previous subtask is finished and whether it is necessary to propose a new subtask. Use the knowledge base results about shopping priorities, store locations, and seasonal plans to inform your decision. The subtask should be straightforward, contribute to the target task and be most suitable for the current situation:
 1. How to finish the target task? You should analyze it step by step.
 2. What is the current progress of the target task according to the analysis in step 1? Please do not make any assumptions if they are not mentioned in the above information. You should assume that you are doing the task from scratch.
 3. What is the previous subtask? Does the previous subtask finish? If so, give evidence that the task was completed. Or is it improper for the current situation? Then select a new one, otherwise you should reuse the last subtask.

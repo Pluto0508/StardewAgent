@@ -57,6 +57,133 @@ class SkillExecutor:
             if callable(func) and not func_name.startswith("__"):
                 
                 setattr(self, func_name, func)
+                
+##class StarDojoLLM(StarDojo):
+    def __init__(
+            self, port: int = 10783,
+            save_index: int = 0,
+            new_game: bool = False,
+            is_RL: bool = False,
+            image_save_path: str = None,
+            agent: PipelineRunner = None,
+            task: TaskBase = None,
+            image_obs: bool = False,
+            needs_pausing: bool = True,
+            output_video: bool = False,
+            knowledge_base_path: str = "./knowledge.json" 
+    ) -> None:
+        super().__init__(port, save_index, new_game, is_RL, image_save_path, output_video=output_video)
+        self.agent = agent
+        self.task = task
+        self.needs_pausing = needs_pausing
+        self.skill_executer = SkillExecutor(actionproxy=self.action_proxy)
+        self.last_action = None
+        self.image_obs = image_obs
+        self.step_num = 0
+        self.task_proxy = InitTaskProxy(port)
+
+        self._init_knowledge_memory_integration(knowledge_base_path)
+        
+        if task is not None:
+            self.action_proxy.wait_for_server()
+            task.init_task(self.task_proxy)
+            self.action_proxy.set_mmap_reader()
+            self.agent.reconfigure_root_logger(port=None, task=None)
+
+    def _init_knowledge_memory_integration(self, knowledge_base_path: str):
+        try:
+            if os.path.exists(knowledge_base_path):
+                logger.write(f"Loading knowledge base from: {knowledge_base_path}")
+                
+                embedding_provider = self.agent.embedding_provider
+
+                if hasattr(self.agent, 'memory'):
+                    existing_memory = self.agent.memory
+                    if hasattr(existing_memory, '__class__'):
+                        existing_memory.knowledge_base_path = knowledge_base_path
+                        existing_memory.embedding_provider = embedding_provider
+
+                        from stardojo.memory.basic_vector_memory import KnowledgeBaseMemory
+                        existing_memory.knowledge_base = KnowledgeBaseMemory(
+                            knowledge_base_path, 
+                            embedding_provider
+                        )
+                        
+                        logger.write("Knowledge base integrated with existing memory system")
+            else:
+                logger.warn(f"Knowledge base file not found: {knowledge_base_path}")
+                
+        except Exception as e:
+            logger.error(f"Failed to initialize knowledge memory integration: {e}")
+
+    def step(self, autoAction=None):
+        obs = self._get_processed_obs()
+        if self.needs_pausing:
+            logging.log(logging.INFO, f"Starting to plan, the game is paused.")
+            self.action_proxy.pause_game()
+        try:
+            self._record_pre_planning_state(obs)
+            
+            skill_steps = self.agent.run_planning(obs, image_obs=self.image_obs, step_num=self.step_num)
+        except Exception as e:
+            logging.log(logging.ERROR, f"Error in planning: {e}")
+            if self.needs_pausing:
+                logging.log(logging.INFO, f"Finished planning, the game is resumed.")
+                self.action_proxy.resume_game()
+            return self.obs, 0, False, False, {}
+        
+        if self.needs_pausing:
+            logging.log(logging.INFO, f"Finished planning, the game is resumed.")
+            self.action_proxy.resume_game()
+        
+        action = skill_steps
+        exec_info = self.agent.gm.execute_actions(action, self.skill_executer)
+
+        self.last_action = action[0]
+        self.step_num += 1
+
+        self._record_post_execution_state(obs, action, exec_info)
+
+        res_params = {
+            "exec_info": exec_info,
+        }
+
+        self.agent.memory.update_info_history(res_params)
+
+        info = {
+            "records": exec_info
+        }
+        obs = self._get_obs()
+        self.obs = obs
+        
+        return self.obs, 0, self.task.evaluate(self.obs, self.task_proxy)['completed'], False, info
+
+    def _record_pre_planning_state(self, obs: Dict):
+        try:
+            if hasattr(self.agent, 'memory') and hasattr(self.agent.memory, 'add_experience'):
+                self.agent.memory.add_experience(
+                    state=obs,
+                    action="planning_start",
+                    result="planning_initiated",
+                    success=True,
+                    reasoning=f"Step {self.step_num}, starting planning process"
+                )
+        except Exception as e:
+            logger.error(f"Error recording pre-planning state: {e}")
+
+    def _record_post_execution_state(self, obs: Dict, action: List, exec_info: Dict):
+        try:
+            if hasattr(self.agent, 'memory') and hasattr(self.agent.memory, 'add_experience'):
+                success = exec_info.get('success', False)
+                self.agent.memory.add_experience(
+                    state=obs,
+                    action=str(action[0]) if action else "unknown",
+                    result=str(exec_info),
+                    success=success,
+                    reasoning=f"Step {self.step_num}, execution completed"
+                )
+        except Exception as e:
+            logger.error(f"Error recording post-execution state: {e}")
 
 
 class StarDojoLLM(StarDojo):
@@ -310,7 +437,8 @@ def run_stardojo(
     checkpoint_interval: int = 5,
     env_config_path: str = "./conf/env_config_stardew.json",
     llm_config_path: str = "./conf/openai_config.json",
-    embed_config_path: str = "./conf/openai_config.json"
+    embed_config_path: str = "./conf/openai_config.json",
+    #knowledge_base_path: str = "./knowledge.json"
 ):
 
     logging.basicConfig(
@@ -339,7 +467,8 @@ def run_stardojo(
         embed_provider_config_path=embed_config_path,
         task_description=task.llm_description,
         use_self_reflection=False,
-        use_task_inference=False
+        use_task_inference=False,
+        #knowledge_base_path=knowledge_base_path
     )
     atexit.register(exit_cleanup, react_agent)
 

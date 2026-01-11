@@ -3,6 +3,12 @@ Assume you are a helpful AI assistant integrated with 'Stardew Valley' on the PC
 Target task:
 <$task_description$>
 
+#Knowledge Base Results: 
+<$knowledge_base_results$>
+
+Memory Results: 
+#<$memory_results$>
+
 Current subtask for completing the target task:
 <$subtask_description$>
 
@@ -42,6 +48,7 @@ Reasoning: You need to answer the following questions step by step to get some r
 4. Is the subtask completed? Give your reasons. If you want to make any confirmation, regard it as a success.
 5. Is the target task completed? Give your reasons.
 6. Do you think the subtask is reasonable? Give your reasons.
+#7. How can the knowledge base information about land clearing techniques and tool specifications improve your clearing strategy?
 
 You should only respond in the format as described below.
 Reasoning:

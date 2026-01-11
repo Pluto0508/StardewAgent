@@ -826,3 +826,207 @@ class Planner(BasePlanner):
         data = self.task_inference_(input=input)
 
         return data
+    
+##class EnhancedPlanner(BasePlanner):
+
+    def __init__(self,
+                 llm_provider: Any = None,
+                 planner_params: Dict = None,
+                 use_task_inference: bool = False,
+                 use_self_reflection: bool = False,
+                 information_gathering_max_steps: int = 1,
+                 icon_replacer: Any = None,
+                 object_detector: Any = None,
+                 frame_extractor: Any = None,
+                 knowledge_base: Any = None,
+                 memory: Any = None):
+        
+        super(BasePlanner, self).__init__()
+        
+        self.llm_provider = llm_provider
+        self.knowledge_base = knowledge_base
+        self.memory = memory
+        
+        self.use_task_inference = use_task_inference
+        self.use_self_reflection = use_self_reflection
+        self.information_gathering_max_steps = information_gathering_max_steps
+        
+        self.icon_replacer = icon_replacer
+        self.object_detector = object_detector
+        self.frame_extractor = frame_extractor
+        
+        self.set_internal_params(planner_params=planner_params,
+                               use_task_inference=use_task_inference)
+
+    def _retrieve_contextual_information(self, task_description: str, current_context: Dict) -> Dict[str, str]:
+        retrieval_results = {
+            "knowledge_base_results": "No knowledge base available.",
+            "memory_results": "No memory available.",
+            "recent_experiences": "No recent experiences available."
+        }
+
+        if self.knowledge_base:
+            try:
+                kb_results = self.knowledge_base.query_knowledge(task_description, top_k=3)
+                retrieval_results["knowledge_base_results"] = self._format_knowledge_results(kb_results)
+            except Exception as e:
+                logger.error(f"Error retrieving from knowledge base: {e}")
+                retrieval_results["knowledge_base_results"] = f"Knowledge base retrieval error: {e}"
+
+        if self.memory and hasattr(self.memory, 'query_knowledge_and_memory'):
+            try:
+                memory_query = f"{task_description} {current_context.get('current_observation', '')}"
+                memory_results = self.memory.query_knowledge_and_memory(memory_query, top_k=3)
+                
+                retrieval_results["memory_results"] = self._format_memory_results(memory_results.get("memory_results", []))
+                retrieval_results["recent_experiences"] = self._format_recent_experiences(memory_results.get("recent_memory_results", []))
+            except Exception as e:
+                logger.error(f"Error retrieving from memory: {e}")
+                retrieval_results["memory_results"] = f"Memory retrieval error: {e}"
+
+        return retrieval_results
+
+    def _format_knowledge_results(self, knowledge_results: List[Dict]) -> str:
+        if not knowledge_results:
+            return "No relevant knowledge found."
+            
+        formatted = ["RELEVANT KNOWLEDGE BASE INFORMATION:"]
+        for i, item in enumerate(knowledge_results, 1):
+            content = item.get('content', 'No content')
+            score = item.get('score', 0)
+            formatted.append(f"{i}. {content} (Relevance: {score:.2f})")
+        
+        return "\n".join(formatted)
+
+    def _format_memory_results(self, memory_results: List[Any]) -> str:
+        if not memory_results:
+            return "No relevant past experiences found."
+            
+        formatted = ["RELEVANT PAST EXPERIENCES:"]
+        for i, item in enumerate(memory_results, 1):
+            if hasattr(item, 'description'):
+                formatted.append(f"{i}. {item.description}")
+            elif isinstance(item, dict):
+                action = item.get('action', 'Unknown')
+                result = item.get('result', 'Unknown')
+                success = item.get('success', 'Unknown')
+                formatted.append(f"{i}. Action: {action}, Result: {result}, Success: {success}")
+        
+        return "\n".join(formatted)
+
+    def _format_recent_experiences(self, recent_results: List[Any]) -> str:
+        if not recent_results:
+            return "No recent experiences available."
+            
+        formatted = ["RECENT EXPERIENCES:"]
+        for i, item in enumerate(recent_results, 1):
+            if isinstance(item, dict):
+                action = item.get('action', 'Unknown')
+                result = item.get('result', 'Unknown')
+                timestamp = item.get('timestamp', 'Unknown')
+                formatted.append(f"{i}. [{timestamp}] Action: {action}, Result: {result}")
+        
+        return "\n".join(formatted)
+
+    def _enhance_input_with_context(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
+        if input_data is None:
+            return input_data
+
+        task_description = input_data.get("task_description", "")
+        current_context = {
+            "current_observation": input_data.get("gathered_information_description", ""),
+            "location": input_data.get("location", ""),
+            "season": input_data.get("season", ""),
+            "inventory": input_data.get("inventory", []),
+            "toolbar": input_data.get("toolbar_information", "")
+        }
+
+        context_info = self._retrieve_contextual_information(task_description, current_context)
+
+        enhanced_input = input_data.copy()
+        enhanced_input.update(context_info)
+        
+        return enhanced_input
+
+    def _record_planning_experience(self, 
+                                  task: str, 
+                                  action: str, 
+                                  result: str, 
+                                  success: bool,
+                                  reasoning: str = "") -> None:
+        if self.memory and hasattr(self.memory, 'add_experience'):
+            try:
+                experience_context = {
+                    "task": task,
+                    "timestamp": time.time()
+                }
+                self.memory.add_experience(
+                    state=experience_context,
+                    action=action,
+                    result=result,
+                    success=success,
+                    reasoning=reasoning
+                )
+            except Exception as e:
+                logger.error(f"Error recording planning experience: {e}")
+
+    def information_gathering(self, *args, input: Dict[str, Any] = None, **kwargs) -> Dict[str, Any]:
+        if input is None:
+            input = self.inputs[constants.INFORMATION_GATHERING_MODULE]
+
+        enhanced_input = self._enhance_input_with_context(input)
+        
+        for i in range(self.information_gathering_max_steps):
+            data = self.information_gathering_(input=enhanced_input, class_=None)
+            success = data["success"]
+            if success:
+                break
+
+        return data
+
+    def action_planning(self, *args, input: Dict[str, Any] = None, **kwargs) -> Dict[str, Any]:
+        if input is None:
+            input = self.inputs[constants.ACTION_PLANNING_MODULE]
+
+        enhanced_input = self._enhance_input_with_context(input)
+        
+        data = self.action_planning_(input=enhanced_input)
+
+        if data.get("res_dict"):
+            action = data["res_dict"].get("action", "Unknown")
+            self._record_planning_experience(
+                task=enhanced_input.get("task_description", ""),
+                action=action,
+                result="Planning completed",
+                success=data.get("flag", False),
+                reasoning=data["res_dict"].get("reasoning", "")
+            )
+        
+        return data
+
+    def success_detection(self, *args, input: Dict[str, Any] = None, **kwargs) -> Dict[str, Any]:
+        if input is None:
+            input = self.inputs["success_detection"]
+
+        enhanced_input = self._enhance_input_with_context(input)
+        
+        data = self.success_detection_(input=enhanced_input)
+        return data
+
+    def self_reflection(self, *args, input: Dict[str, Any] = None, **kwargs) -> Dict[str, Any]:
+        if input is None:
+            input = self.inputs[constants.SELF_REFLECTION_MODULE]
+
+        enhanced_input = self._enhance_input_with_context(input)
+        
+        data = self.self_reflection_(input=enhanced_input)
+        return data
+
+    def task_inference(self, *args, input: Dict[str, Any] = None, **kwargs) -> Dict[str, Any]:
+        if input is None:
+            input = self.inputs[constants.TASK_INFERENCE_MODULE]
+
+        enhanced_input = self._enhance_input_with_context(input)
+        
+        data = self.task_inference_(input=enhanced_input)
+        return data

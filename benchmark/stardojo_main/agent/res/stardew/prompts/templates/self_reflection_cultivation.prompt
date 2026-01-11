@@ -3,6 +3,12 @@ Assume you are a helpful AI assistant integrated with 'Stardew Valley' on the PC
 Current task:
 <$task_description$>
 
+#Knowledge Base Results: 
+<$knowledge_base_results$>
+
+Memory Results: 
+#<$memory_results$>
+
 Basic knowledge:
 <$basic_knowledge$>
 
@@ -92,6 +98,7 @@ Reasoning: You need to answer the following questions step by step to get some r
 5. Is the target task completed? Give your reasons.
 6. Based on provided information, what is your next sub task? 
 7. Do you think the subtask is reasonable? Give your reasons.
+#8. How can the knowledge base and memory information help improve future actions for cultivation tasks? Consider seasonal plans, tool upgrades, and farming techniques from the knowledge base.
 
 You should only respond in the format described below.
 Reasoning:

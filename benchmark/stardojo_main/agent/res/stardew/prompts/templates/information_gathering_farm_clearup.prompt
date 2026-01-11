@@ -5,7 +5,13 @@ Assume you are a helpful AI assistant integrated with 'Stardew Valley' on the PC
 Current task:
 <$task_description$>
 
-Description: Please analyze and describe the screenshot image in a grid-by-grid format and then provide an overall image description. Pay attention to anything related to the task. The image is divided into a 3x5 grid, each cell having its own coordinates. For each grid cell, describe the contents in detail, focusing on any critical icons, or objects present in that particular segment. If there are specific features such as characters or text, mention these as well. After completing the description for one cell, proceed to the next, for example, 'In grid (1,1), [description]. In grid (1,2), [description].' and so on until the entire image is covered.
+#Knowledge Base Results: 
+<$knowledge_base_results$>
+
+Memory Results: 
+#<$memory_results$>
+
+Description: #Please analyze and describe the screenshot image in a grid-by-grid format and then provide an overall image description. Pay attention to anything related to the task. Use the provided knowledge_base_results and memory_results to enhance your understanding and focus on relevant elements.
 
 Date_time: The date and time information in the game are shown on the upper-right of the screenshot, in grid (1, 5). An example of the date and time information is "Wed 10, 5:10 pm".
 

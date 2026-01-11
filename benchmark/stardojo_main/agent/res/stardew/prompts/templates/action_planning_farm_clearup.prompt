@@ -5,6 +5,12 @@ Here is some helpful information to help you make the decision.
 Current subtask:
 <$subtask_description$>
 
+#Knowledge Base Results: 
+<$knowledge_base_results$>
+
+Memory Results:
+#<$memory_results$>
+
 Current date and time:
 <$date_time$>
 
@@ -51,6 +57,7 @@ Reasoning: You should think step by step and provide detailed reasoning to deter
     9. Is the selected action the same as the last executed action? If yes, regenerate the action and give the reasons.
     10. Do all the selected actions exist in the valid action set? If no, regenerate the action and give the reasons.
     11. Analyze whether the selected action meets the requirements of the Actions below one by one. Does the generated action meet all the requirements? If not, regenerate the action and give the reasons. 
+    #12. What relevant information from the knowledge base and memory can help in completing the task? Use the provided knowledge_base_results and memory_results to inform your reasoning.
 
 Actions: The requirements that the generated action needs to follow. The best action, or short sequence of actions without gaps, to execute next to progress in achieving the goal. Pay attention to the names of the available skills and to the previous skills already executed, if any. You should also pay more attention to the following action rules:
     1. You should output actions in Python code format and specify any necessary parameters to execute that action. If the function has parameters, you should also include their names and decide their values, like "move_right(duration=1)". If it does not have a parameter, just output the action, like "open_map()".
