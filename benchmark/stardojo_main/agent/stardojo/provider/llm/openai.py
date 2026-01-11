@@ -821,7 +821,6 @@ class OpenAIProvider(OpenAIProvider_):
                 logger.double_check()
 
             message = response.choices[0].message.content
-            print(message)
 
             info = {
                 "prompt_tokens" : response.usage.prompt_tokens,

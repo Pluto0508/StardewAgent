@@ -2,6 +2,7 @@ import os
 import atexit
 from typing import Dict, Any
 from copy import deepcopy
+import re
 
 
 from stardojo.utils.dict_utils import kget
@@ -283,6 +284,21 @@ class PipelineRunner():
         skill_steps = []
         if 'actions' in response:
             skill_steps = response['actions']
+        elif 'action' in response:
+            skill_steps=response['action']
+        
+
+        '''
+        pattern= r'\b(?:use|move|craft|choose_item|interact|choose_option|attach_item|unattach_item|menu)\(\S+\)'
+        if isinstance(skill_steps,str):
+            skill_steps=re.findall(pattern,skill_steps)
+        elif isinstance(skill_steps,list):
+            temp=[]
+            for item in skill_steps:
+                if re.findall(pattern,item):
+                    temp.append(re.findall(pattern,item)[0])
+            skill_steps=temp
+        '''
 
         if skill_steps:
             skill_steps = [i for i in skill_steps if i != '']
@@ -387,10 +403,26 @@ class PipelineRunner():
         logger.write("Stardew Action Planning Postprocess")
 
         processed_response = deepcopy(response)
+        print(response)
 
         skill_steps = []
-        if 'actions' in response or 'Action' in response:
+        if 'actions' in response:
             skill_steps = response['actions']
+        elif 'action' in response:
+            skill_steps=response['action']
+
+        #postprocess the skill_steps
+        '''
+        pattern= r'\b(?:use|move|craft|choose_item|interact|choose_option|attach_item|unattach_item|menu)\(\S+\)'
+        if isinstance(skill_steps,str):
+            skill_steps=re.findall(pattern,skill_steps)
+        elif isinstance(skill_steps,list):
+            temp=[]
+            for item in skill_steps:
+                if re.findall(pattern,item):
+                    temp.append(re.findall(pattern,item)[0])
+            skill_steps=temp
+        '''
 
         if skill_steps:
             skill_steps = [i for i in skill_steps if i != '']

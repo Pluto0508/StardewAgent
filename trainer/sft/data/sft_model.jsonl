@@ -1,0 +1,200 @@
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
+{
+    "instruction": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>",
+    "output": "The exist information is <$exist_information$>\nThe target we need to achieve is <$goal$>\n\nYou should only respond in the format described below, and you should not output comments or other information.\n<key>Reasoning</key>:\n<resoning>1. ...\n2. ...\n3. ...\n</resoning>\n<key>Actions</key>:\n<actions>\n```python\n    action(args1=x,args2=y)\n```\n</actions>"
+}
